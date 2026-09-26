@@ -14,8 +14,7 @@ app.add_middleware(
     allow_origins=[
         "http://localhost:5173",
         "http://localhost:3000",
-        "https://spotplus-b0kf5rhxc-datascientist-dev.vercel.app/",
-        
+        "https://spotplus-b0kf5rhxc-datascientist-dev.vercel.app",  # trailing slash removed
     ],
     allow_credentials=True,
     allow_methods=["*"],
