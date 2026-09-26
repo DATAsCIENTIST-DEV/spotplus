@@ -62,13 +62,16 @@ def search_google_maps(query: str) -> list[dict[str, Any]]:
         "scrapePlaceDetailPage": True,
     }
 
-    run = client.actor(actor_id).call(
+       run = client.actor(actor_id).call(
         run_input=run_input
     )
-
     results: list[dict[str, Any]] = []
 
-    dataset_id = run.get("defaultDatasetId")
+    if not run:
+        return results
+
+    # Naya apify-client Run object return karta hai
+    dataset_id = getattr(run, "default_dataset_id", None)
 
     if not dataset_id:
         return results
